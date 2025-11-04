@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+    font-family: "Bricolage Grotesque", sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+h1, h2, h3 {
+     font-family: "Kanit", sans-serif;
+      font-weight: 800;
+      font-style: normal;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-image: url('img/bg_blue2.jpg');
+}
+
+.controls, .stack-area, .info-section {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Distribuye el espacio equitativamente */
+    margin: 0 10px;
+    min-height: 400px;
+}
+
+/* Estilo para la etiqueta del selector */
+.controls label {
+    display: block; 
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Color oscuro */
+}
+#nota {
+    font-size: 12px;
+}
+/* Estilo para el SELECTOR (el dropdown list) */
+#tipo-dato-select {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #e9ecef; /* Un gris claro para destacarlo del input */
+    appearance: none; /* Quita el estilo nativo de algunos navegadores */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="%23333"><polygon points="0,0 10,0 5,10"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Posiciona la flecha */
+    padding-right: 30px; /* Espacio para la flecha */
+}
+
+/* Estilo para cuando el selector está bloqueado */
+#tipo-dato-select:disabled {
+    background-color: #adb5bd; /* Gris más oscuro para indicar bloqueo */
+    color: #495057;
+    cursor: not-allowed;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el input de valor cuando está deshabilitado */
+#valor-input:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+
+/* --- Estilos de la Pila --- */
+.stack-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pila {
+    display: flex;
+    flex-direction: column-reverse; /* Esto hace que los nuevos elementos se apilen arriba */
+    align-items: center;
+    min-height: 400px; /* Altura máxima visible de la pila */
+    width: 150px;
+    border-left: 1px dashed #ccc;
+    border-right: 1px dashed #ccc;
+    padding-top: 10px;
+    position: relative;
+}
+
+.pila-base {
+    background-color: #555;
+    color: white;
+    width: 120px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.bloque {
+    width: 100px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #0056b3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -1px; /* Para que se vean pegados */
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: bold;
+    transition: all 0.3 ease;
+}
+
+.bloque-tope {
+    width: 110px; 
+    height: 55px; 
+    background-color: #ff5722; 
+    border-color: #e64a19;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+    z-index: 5; /* Asegura que se vea por encima de otros */
+}
+
+/* Clase para el efecto de PEEK (el cambio de color al apretar el botón) */
+.resaltado-peek {
+    background-color: #4CAF50 !important; 
+    border-color: #388e3c !important;
+    animation: peek-flash 0.5s ease-in-out;
+}
+
+/* Animación para un efecto de "flash" en PEEK */
+@keyframes peek-flash {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.tope-label {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    background-color: #ffc107;
+    color: #333;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* Resaltado del Tope (PEEK) */
+.resaltado {
+    background-color: #28a745;
+    border-color: #ea2a15;
+    border-style: bold;
+}
+
+/* --- Estilos de Controles y Mensajes --- */
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+input {
+    width: 88%;
+}
+button {
+    font-family: "Bricolage Grotesque", sans-serif;
+    width: 95%;
+    cursor: pointer;
+    color: white;
+    border: none;
+    font-weight: bold; 
+}
+
+#push{
+    background-color: #2a5c0b;
+}
+
+#pop{
+    background-color: #c9031a;
+}
+
+#tope {
+    background-color: #fd9407;
+    color: #181419;
+}
+#reset {
+    background-color:#07a2a6 ;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.estado {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+.info-estado {
+    margin-top: 10px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* --- Estilos de Información --- */
+.info-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 4px solid #007bff;
+    background-color: #e8f0ff;
+}
+
+.error-concepto {
+    border-left-color: #dc3545;
+    background-color: #fcebeb;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    font-size: 0.9em;
+}
+
+
+/* RESPONSIVIDAD PARA DISPOSITIVOS MOVILES */
+
+@media (max-width: 600px) {
+    
+    /* 1. Cambiar la dirección del contenedor principal */
+    .container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        padding: 10px; /*Menos paddding*/
+    }
+
+    /*Ajustar el tamaño y márgenes de cada columna (apartado) */
+    .controls, 
+    .stack-area, 
+    .info-section {
+        flex: auto; /* Permite que cada sección tome el espacio necesario */
+        width: 100%; /* Ocupa todo el ancho disponible */
+        margin: 10px 0; /* Agrega margen vertical para separarlos */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Ajustar el estilo de los elementos internos (botones, inputs, select) */
+    input, button, #tipo-dato-select {
+        width: 95%; /* Asegura que no se peguen a los bordes */
+        margin-left: 2.5%; /* Centrado ligero */
+        margin-right: 2.5%;
+    }
+    
+    /* Para que la pila visual se vea bien en ancho reducido */
+    .stack-area {
+        min-height: 350px; /* Asegura suficiente espacio vertical */
+        /* Eliminamos la barra de pila si causa problemas visuales en ancho estrecho */
+        border-left: none;
+        border-right: none;
+    }
+    
+    /*Centrar la base de la pila */
+    .pila-base {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    /* Mejorar la visibilidad de los mensajes de estado */
+    .estado {
+        font-size: 0.9em;
+    }
+}

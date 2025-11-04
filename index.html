@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" href="img\apilar.png" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <title>Pilas (Stacks) - LIFO</title>
+</head>
+<body>
+
+    <header>
+        <h1>Pilas (Stacks): Uso de LIFO</h1>
+        <p>Estructura de datos lineal que funciona con el principio <b>LIFO (Last In, First Out)</b>, es decir, <b>el último elemento que se introduce es el primero que se elimina.</b>  </p>
+    </header>
+
+    <div class="container">
+        
+        <div class="controls">
+            <h2>Acciones</h2>
+            <label for="tipo-dato-select">Tipo de Dato:</label>
+            <select id="tipo-dato-select" onchange="seleccionarTipoDato()">
+                <option value="">Seleccionar Tipo</option>
+                <option value="int">Entero (int)</option>
+                <option value="double">Decimal (double)</option>
+                <option value="char">Caracter (char)</option>
+                <option value="string">Cadena (string)</option>
+            </select>
+            <p id="nota"><i>*Nota: Para mantener la integridad y homogeneidad de los datos, al seleccionar un tipo de dato, todos los elementos serán de este tipo de dato hasta que la pila se encuentre vacia de nuevo </i></p>
+
+            <input type="text" id="valor-input" placeholder="Valor a apilar (ej. A)">
+            <button id="push" onclick="pushElement()"><b>PUSH (Apilar)</b></button>
+            <button id="pop" onclick="popElement()"><b>POP (Desapilar)</b></button>
+            <button id="tope"onclick="peekElement()"><b>PEEK (Ver Tope)</b></button>
+            <button id="reset" onclick="resetStack()" class="reset-button">Reiniciar Pila</button>
+
+
+            <div id="tipo-actual" class="info-estado"></div>
+            <div id="estado-mensaje" class="estado"></div>
+            <div id="info-estado" class="info-estado"></div>
+        </div>
+        
+        <div class="stack-area">
+            <h2>La Pila (LIFO)</h2>
+            <div id="pila-visual" class="pila"></div>
+            <div class="pila-base">BASE</div>
+        </div>
+
+        <div class="info-section">
+            <h2>Información sobre Pilas</h2>
+            
+            <div class="info-item">
+                <h3>El Iterador: TOPE</h3>
+                <p>Es el <b>único punto de acceso</b> de la pila. Indica la posición del último elemento insertado. Todas las operaciones (PUSH/POP) se realizan a <b> través del Tope. </b></p>
+            </div>
+            
+            <div class="info-item error-concepto">
+                <h3>Error: DESBORDAMIENTO (Overflow)</h3>
+                <p>Este error Ocurre cuando se intenta hacer un <b>PUSH</b> en una pila que ya<b> ha alcanzado su capacidad máxima.</b> En esta simulación, la capacidad máxima es de <b>5 elementos</b></p>
+            </div>
+            
+            <div class="info-item error-concepto">
+                <h3>Error: SUBDESBORDAMIENTO (Underflow)</h3>
+                <p>Ocurre cuando se intenta hacer un <b>POP</b> o <b>PEEK (identificar el tope)</b> en una pila que <b>está vacía</b>. No hay elementos para extraer o consultar.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Las pilas se usan comúnmente en programación para <b>manejar llamadas a funciones, evaluar expresiones y controlar la navegación en navegadores web</b>, entre otras aplicaciones. <br>
+        Sergio Arturo Villarreal Cardona del Grupo DSM42, para la materia de Estructura de Datos, Tema : PILAS (STACK)</p>
+    </footer>
+
+    <script src="pila.js"></script>
+
+</body>
+</html>
