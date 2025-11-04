@@ -22,7 +22,7 @@ function seleccionarTipoDato() {
 
     if (tipoDatoSeleccionado && !pilaBloqueada) {
         valorInput.disabled = false; // Habilitar el input al seleccionar un tipo
-        estadoMensaje.textContent = `¡Listo! Ahora solo se aceptan valores de tipo "${tipoDatoSeleccionado.toUpperCase()}"`;
+        estadoMensaje.textContent = ` Ahora solo se aceptan valores de tipo "${tipoDatoSeleccionado.toUpperCase()}"`;
     } else {
         // Si no selecciona un tipo válido (ej. la opción 'Seleccionar Tipo'), deshabilitamos el input
         valorInput.disabled = true; 
@@ -213,4 +213,5 @@ function inicializarSegura(){
 
 document.addEventListener('DOMContentLoaded', (event) => {
     inicializarSegura();
+
 });
